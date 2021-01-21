@@ -155,25 +155,7 @@ Keep going until you get to the "Welcome to Dialogflow!" page with "Create Agent
 * Click "Manage assistant app", then "Decide how your action is invoked"
 * Under "Display Name" type "Plex" then hit save in the top right (it may give an error, but thats okay).
 
-#### In Home Assistant
-
-Add the following to your `configuration.yaml` file.
-**Note**: If you already have an `intent_script:` section in your config just copy and paste everything after `intent_script:` into that section:
-
-```yaml
-intent_script:
-  Plex:
-    speech:
-      text: "Command sent to Plex."
-    action:
-      - service: plex_assistant.command
-        data:
-          command: "{{command}}"
-```
-
 You can now trigger Plex Assistant by saying "Hey Google, tell plex to..." or "Hey Google, ask plex to..."
-
-***Restart after adding the above.***
 
 </details>
 
@@ -195,30 +177,15 @@ You can now trigger Plex Assistant by saying "Hey Google, tell plex to..." or "H
 
 ## Home Assistant Conversation Setup
 
-To use Plex Assistant with Home Assistant's conversation integration simply add both the code blocks below to your configuration.yaml file. Using the conversation integration will work with any of the languages from the table above. **This will not enable Google Assistant support, this is only for HA's built in voice assistant**.
-
-**Note**: If you already have an `conversation:`section in your config just copy and paste everything after `conversation:` into that section or if you already have an `intents:` section in the `conversation:` section copy everything under `intents:` and paste it into the `intents:` section:
+To use Plex Assistant with Home Assistant's conversation integration simply the code below to your configuration.yaml file. Using the conversation integration will work with any of the languages from the table above. **This will not enable Google Assistant support, this is only for HA's built in voice assistant**.
 
 ```yaml
 conversation:
   intents:
-    PlexAssistant:
+    Plex:
      # These trigger commands can be changed to suit your needs.
      - "Tell Plex to {command}"
      - "{command} with Plex"
-```
-
-**Note**: If you already have an `intent_script:`section in your config just copy and paste everything after `intent_script:` into that section or if you have already setup the intent script for Dialog flow, this is the same intent script (no need to add it again).
-
-```yaml
-intent_script:
-  Plex:
-    speech:
-      text: Command sent to Plex.
-    action:
-      service: plex_assistant.command
-      data_template:
-        command: "{{command}}"
 ```
 
 ## Commands

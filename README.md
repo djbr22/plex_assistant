@@ -82,7 +82,7 @@ Note: Plex clients must be open in order to be detected by the sensor or recieve
 
 ## Google Assistant Triggers
 
-You can either use IFTTT or DialogFlow to trigger Plex Assistant with Google Assistant. IFTTT is the easiest way to set this up, but only if IFTTT supports your language. DialogFlow is a bit more involved and has some quirks, but has support for more languages.
+You can either use IFTTT or DialogFlow to trigger Plex Assistant with Google Assistant. IFTTT is the easiest and recomended way to set this up. DialogFlow is a bit more involved and has some major quirks, but has support for more languages.
 
 <details>
   <summary><b>IFTTT Setup Guide</b></summary>

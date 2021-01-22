@@ -111,7 +111,7 @@ Now you can select how you want to trigger this service, you can select up to 3 
 * Search for and select "Webhooks", then select "Make a web request"
 * In the URL field enter the webhook URL HA provided you earlier
 * Select method "Post" and content type "application/json"
-* Then copy and paste the code below into the body field
+* Then copy/paste the code below into the body field and save
 
 `{ "action": "call_service", "service": "plex_assistant.command", "command": "{{TextField}}" }`
 

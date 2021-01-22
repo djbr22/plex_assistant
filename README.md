@@ -177,15 +177,16 @@ You can now trigger Plex Assistant by saying "Hey Google, tell plex to..." or "H
 
 ## Home Assistant Conversation Setup
 
-To use Plex Assistant with Home Assistant's conversation integration simply the code below to your configuration.yaml file. Using the conversation integration will work with any of the languages from the table above. **This will not enable Google Assistant support, this is only for HA's built in voice assistant**.
+**This does not enable Google Assistant support, this is only for HA's built in voice assistant**.
+
+By default the phrases `Tell Plex to {command}` & `{command} with Plex` work with the HA voice assistant ( [if you've enabled it](https://www.home-assistant.io/integrations/conversation/) ). This will also work with any of the languages from the table above, but you will need to add your own trigger phrases in the language of your choice. Below is an example of how to add custom phrases.
 
 ```yaml
 conversation:
   intents:
     Plex:
-     # These trigger commands can be changed to suit your needs.
-     - "Tell Plex to {command}"
-     - "{command} with Plex"
+     - "I ask the media Gods to {command}"
+     - "{command} oh great lords of Plextopia"
 ```
 
 ## Commands

@@ -109,6 +109,9 @@ async def async_setup(hass, config):
         hass.bus.listen("ifttt_webhook_received", handle_IFTTT_webhook)
         time.sleep(5)
         update_sensor(hass, PA)
+        hass.services.call(
+            "conversation", "process", {"text": "tell plex to initialize_plex_intent"}
+        )
         return PA
 
     PA = await hass.async_add_executor_job(
@@ -126,7 +129,6 @@ async def async_setup(hass, config):
     def handle_input(call):
         offset = 0
         player = None
-        alias = ["", 0]
         media = None
         result = None
 
@@ -136,6 +138,7 @@ async def async_setup(hass, config):
         if not call.data.get("command").strip():
             _LOGGER.warning(localize["no_call"])
             return
+
         command = call.data.get("command").strip().lower()
         _LOGGER.debug("Command: %s", command)
 
@@ -165,8 +168,7 @@ async def async_setup(hass, config):
         # Get the closest name match to device in command, fuzzy returns its name and score.
         devices = PA.chromecast_names + PA.plex_client_names + PA.plex_client_ids
         device = fuzzy(command["device"] or default_device, devices)
-        if aliases:
-            alias = fuzzy(command["device"] or default_device, PA.alias_names)
+        alias = fuzzy(command["device"] or default_device, PA.alias_names) if aliases else ["", 0]
 
         # Call start_script if set for device and device not found
         if (
